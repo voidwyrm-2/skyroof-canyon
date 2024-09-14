@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca6hiqfkvmorn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ov5he"]
+[ext_resource type="Texture2D" uid="uid://c2wgecyih16ag" path="res://resources/Joe_sheet.png" id="2_putho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mfml"]
+size = Vector2(10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dtbm"]
+atlas = ExtResource("2_putho")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnq5q"]
+atlas = ExtResource("2_putho")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4klvl"]
+atlas = ExtResource("2_putho")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqprg"]
+atlas = ExtResource("2_putho")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ct8g"]
+animations = [{
+"frames": [{
+"duration": 2.4,
+"texture": SubResource("AtlasTexture_4dtbm")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_rnq5q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_4klvl")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_mqprg")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 3
+script = ExtResource("1_ov5he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6mfml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7ct8g")
+animation = &"idle"

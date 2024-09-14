@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+resources/
+export_presets.cfg
+SkyroofCanyon.*
+project.godot
